@@ -19,9 +19,9 @@ export default function App() {
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ size }) => {
                     if (route.name === 'Home') {
-                        return <HomeIcon fill={srceen === 0 ? Colors.primary : Colors.second} stroke={srceen === 0 ? Colors.primary : Colors.eighth} />;
+                        return <HomeIcon fill={srceen === 0 ? Colors.primary : Colors.second} dot={srceen === 0 ? Colors.primary : Colors.eighth} />;
                     } else if (route.name === 'Favorite') {
-                        return <HeartIcon fill={srceen === 1 ? Colors.primary : Colors.second} stroke={srceen === 1 ? Colors.primary : Colors.eighth} />;
+                        return <HeartIcon fill={srceen === 1 ? Colors.primary : Colors.second} dot={srceen === 1 ? Colors.primary : Colors.eighth} />;
                     }
                    
                 },
