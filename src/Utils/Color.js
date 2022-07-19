@@ -14,4 +14,5 @@ export const Colors = {
     twelveth: '#1F82C8',
     thirteenth: '#FBBB4A',
     fourteenth: '#ECECEC',
+    eleventh: "#8b8b8b"
 }

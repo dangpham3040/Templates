@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+
 //screen
 import Home from '../Screen/Home'
 import login from '../Screen/Login'
 //Icons
 import HomeIcon from '../Icons/Home'
 import HeartIcon from '../Icons/Heart'
+import MenuIcon from '../Icons/Menu'
 //other
 import { Colors } from '../Utils/Color';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -23,7 +25,9 @@ export default function App() {
                     } else if (route.name === 'Favorite') {
                         return <HeartIcon fill={srceen === 1 ? Colors.primary : Colors.second} dot={srceen === 1 ? Colors.primary : Colors.eighth} />;
                     }
-                   
+                    else if (route.name === 'Menu') {
+                        return <MenuIcon fill={srceen === 2 ? Colors.primary : Colors.eighth} dot={srceen === 2 ? Colors.primary : Colors.eighth} />;
+                    }       
                 },
             })
             }
@@ -44,7 +48,12 @@ export default function App() {
                         setSrceen(1)
                     },
                 })} />
-               
+                <Tab.Screen name="Menu" component={MenuStack} options={{ headerShown: false, }}
+                listeners={() => ({
+                    tabPress: () => {
+                        setSrceen(2)
+                    },
+                })} />
         </Tab.Navigator >
     );
 }
@@ -56,6 +65,13 @@ export const HomeStack = () => {
     );
 };
 export const FavoriteStack = () => {
+    return (
+        <Stack.Navigator initialRouteName="Favorite-stack">
+            <Stack.Screen name="Login-stack" component={login} options={{ headerShown: false }} />
+        </Stack.Navigator>
+    );
+};
+export const MenuStack = () => {
     return (
         <Stack.Navigator initialRouteName="Favorite-stack">
             <Stack.Screen name="Login-stack" component={login} options={{ headerShown: false }} />
