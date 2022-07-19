@@ -19,7 +19,7 @@
    View,
  } from 'react-native';
  import HeartIcon from '../../Icons/Heart'
- import HomeIcon from '../../Icons/Heart'
+ import HomeIcon from '../../Icons/Star'
  export default function App( props){
    return (
     <View style={{flex:1, backgroundColor:"#fff"}} >
