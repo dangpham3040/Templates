@@ -11,9 +11,7 @@ import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal'
 import { Colors } from "../../Utils/Color";
-
-
-function ModalTester(props) {
+export default function App(props) {
     const navigation = useNavigation();
     const handleCancel = () => {
         props.cancel(false)
@@ -47,4 +45,3 @@ function ModalTester(props) {
     );
 }
 
-export default ModalTester;

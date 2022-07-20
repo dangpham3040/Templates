@@ -13,7 +13,10 @@ export default function App(props) {
                 <AnimatedEllipsis
                     style={styles.dotloading}
                     numberOfDots={3}
-                    animationDelay={250} />
+                    minOpacity={0.4}
+                    animationDelay={200}
+                  
+                />
             </View>
 
         </View>
