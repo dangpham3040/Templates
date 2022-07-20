@@ -15,9 +15,12 @@
  //style
  import { styles } from './styles';
  import { common } from '../../Utils/common_styles';
+ 
+
  export default function App(props){
    return (
     <View style={common.full} >
+    
       <TouchableOpacity onPress={()=>props.navigation.navigate('Home')}>
       <Text>LOgion</Text>
       </TouchableOpacity>

@@ -23,7 +23,7 @@ export default function App(props) {
     );
     const Temps = []
     for (let i = 0; i < 4; i++) {
-        Temps.push(<Items />)
+        Temps.push(<Items key={i}/>)
     }
     return (
         <View style={styles.Container}>
