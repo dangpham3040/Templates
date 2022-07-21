@@ -7,7 +7,7 @@ export const common = StyleSheet.create({
         backgroundColor: Colors.second,
     },
     container: {
-        marginHorizontal: 20,
-        marginVertical: 20
+       
+        paddingHorizontal:20
     }
 })

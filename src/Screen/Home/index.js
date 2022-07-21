@@ -20,26 +20,31 @@ import Input from '../../Components/Textinput'
 import Header from '../../Components/Header_Home'
 //Items
 import Items_Category from '../../Components/Items_Category'
-import j from '../../Static/Images/logoIphone.png'
+import Items_product from '../../Components/Items_Product'
 export default function App(props) {
   const [choose, setchoose] = useState(false)
   const [isLoading, SetisLoaing] = useState(true)
   const [text, settext] = useState("")
+  const [name,setname]=useState("")
+  const link = "https://firebasestorage.googleapis.com/v0/b/clothes-store-21b7f.appspot.com/o/Banner%2Fimages.jpeg?alt=media&token=564c645f-be07-43d1-acd9-d546379e19db"
   const banner = [
     "https://firebasestorage.googleapis.com/v0/b/clothes-store-21b7f.appspot.com/o/Banner%2Fimages.jpeg?alt=media&token=564c645f-be07-43d1-acd9-d546379e19db",
     "https://firebasestorage.googleapis.com/v0/b/clothes-store-21b7f.appspot.com/o/Banner%2Fbanner2.jpg?alt=media&token=b379dd57-ad46-4826-bd39-6205441c250f",
     "https://firebasestorage.googleapis.com/v0/b/clothes-store-21b7f.appspot.com/o/Banner%2Fbanner3.jpg?alt=media&token=966bbf24-abdc-4236-a657-52b53153b7b7",
   ]
 
-  // const DATA = [
-  //   { id: '1', img: require('../../Static/Images/logoXiaomi.png'), firm: 'samsung' },
-  //   { id: '2', img: require('../../static/Images/logoXiaomi.png'), firm: 'xiaomi' },
-  //   { id: '3', img: require('../../static/Images/logoIphone.png'), firm: 'apple' },
-  //   { id: '4', img: require('../../static/Images/logoNokia.png'), firm: 'nokia' },
-  //   { id: '5', img: require('../../static/Images/logoOppo.png'), firm: 'oppo' },
-  // ];
+  const DATA = [
+    { id: '1', img: require('../../Static/Images/logoSamsung.png'), firm: 'samsung' },
+    { id: '2', img: require('../../Static/Images/logoXiaomi.png'), firm: 'xiaomi' },
+    { id: '3', img: require('../../Static/Images/logoIphone.png'), firm: 'apple' },
+    { id: '4', img: require('../../Static/Images/logoNokia.png'), firm: 'nokia' },
+    { id: '5', img: require('../../Static/Images/logoOppo.png'), firm: 'oppo' },
+  ];
   const renderItem_Category = ({ item }) => (
     <Items_Category item={item} />
+  );
+  const renderItem_Product = ({ item }) => (
+    <Items_product item={item} ok={() => setchoose(!choose)} name ={e=>setname(e)} />
   );
   useEffect(() => {
     const intervalId = setInterval(() => {  //assign interval to a variable to clear it.
@@ -53,8 +58,14 @@ export default function App(props) {
       {isLoading ?
         <Loader />
         :
-        <ScrollView style={common.container}>
-          <Input text={"seach"} icon={<SeachICon />} send={(e) => settext(e)} />
+        <ScrollView >
+          <View style={styles.view_seach}>
+            <Input
+              text={"seach"}
+              icon={<SeachICon />}
+              send={(e) => settext(e)}
+            />
+          </View>
           <View style={styles.component}>
             <SliderBox
               style={styles.bannerBackground}
@@ -66,20 +77,26 @@ export default function App(props) {
               autoplay={true}
             />
           </View>
-          {/* <FlatList
+          <FlatList
+            style={styles.listCategory}
             horizontal
             data={DATA}
             renderItem={renderItem_Category}
-            // keyExtractor={item => item.id}
             showsHorizontalScrollIndicator={false}
-          /> */}
-     
+          />
+          <FlatList
+            style={styles.listProduct}
+            data={DATA}
+            renderItem={renderItem_Product}
+            showsHorizontalScrollIndicator={false}
+            numColumns={2}
+          />
           <Confirm
             ModalVisible={choose}
             cancel={e => setchoose(e)}
             ok={() => console.log("done")}
             name={"Test model"}
-            describe={"Are you sure you want to !??"}
+            describe={"Are you sure you want to !?? "+name}
           />
         </ScrollView>
       }

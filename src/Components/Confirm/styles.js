@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     width: "100%",
-    marginVertical: 50
+    marginVertical: 30
   },
   describe: {
     textTransform: "capitalize",
